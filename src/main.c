@@ -34,16 +34,33 @@ int main() {
     //write_lcd_clear(&dev_lcd_screen, ZEPHYR_MSG LCD_LINE_2);
 
 	// Récupération de la température et de l'humidité par le dht11
+
+	int temperature_= 0;
+	int humidite_= 0;
+	
+	
+
+	
+
+	while(1){
+	
 	sensor_sample_fetch(dht11);
 	sensor_channel_get(dht11, SENSOR_CHAN_AMBIENT_TEMP, &temperature);
 	sensor_channel_get(dht11, SENSOR_CHAN_HUMIDITY, &humidity);
 
-	int temperature_ = sensor_value_to_double(&temperature);
-	int humidite_ = sensor_value_to_double(&humidity);
+	temperature_ = sensor_value_to_double(&temperature);
+	humidite_ = sensor_value_to_double(&humidity);
 
+	printf("RELEVE: \n");
 	printf("temperature = %d", temperature_);
 	printf("\n");
 	printf("humidite = %d", humidite_);
+	printf("\n");
+	
+	k_sleep(K_SECONDS(10));
+
+	}
+
 	
 
 

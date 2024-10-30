@@ -73,3 +73,15 @@ static void lcd_toggle_enable(const struct i2c_dt_spec *dev_lcd_screen, uint8_t 
     }
     k_sleep(K_MSEC(5));
 }
+
+/*
+void interrupt()
+{
+    int flag_adc = 1;
+
+    k_sleep(10) 
+
+
+}
+
+*/
