@@ -1,4 +1,8 @@
 / {  
+	chosen {
+		zephyr,user = &adc0;
+	};
+	
 
 	gpio_keys {
 		compatible = "gpio-keys";
@@ -38,6 +42,21 @@
 	};
 
 };
+
+&adc0 {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@6 {
+		reg = <6>;
+		zephyr,gain = "ADC_GAIN_1_4";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+};
+
 
 
  /* 
