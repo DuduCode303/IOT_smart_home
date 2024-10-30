@@ -6,12 +6,23 @@
 		gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
 		label = "LED 1";
 								};
+
+		dht11: dht11 {   // dht11 = capteur d'humidité et température  
+			compatible = "aosong,dht";
+			status = "okay";
+			dio-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+			label = "XHT11";
+		};
 	};
 	
 	aliases {
 		led-yellow = &ledyellow;
 		lcd-screen = &lcdscreen;
 	};
+
+	
+
+
 
 }; // fin du noeud root
 
