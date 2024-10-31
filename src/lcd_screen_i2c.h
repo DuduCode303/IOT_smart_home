@@ -22,6 +22,7 @@ struct i2c_dt_spec;
 
 #define HELLO_MSG "exo2"
 #define ZEPHYR_MSG "Zephyr is cool"
+#define BOUTON_PRESSE_MESSAGE "Bouton presse"
 
 #define START_ALERT_MONITORING_MSG_1 "Alarm"
 #define START_ALERT_MONITORING_MSG_2 "Protection"
@@ -31,6 +32,6 @@ struct i2c_dt_spec;
 
 void init_lcd(const struct i2c_dt_spec *dev_lcd_screen);
 void write_lcd(const struct i2c_dt_spec *dev_lcd_screen, const char *msg, uint8_t line);
-void write_lcd_clear(const struct i2c_dt_spec *dev_lcd_screen, const char *msg, uint8_t line);
+//void write_lcd_clear(const struct i2c_dt_spec *dev_lcd_screen, const char *msg, uint8_t line);   FONCTION RESTANTE A DEFINIR DANS LE .C
 
 #endif // INC_LDC_SCREEN_I2C_H_

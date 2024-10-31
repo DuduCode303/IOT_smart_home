@@ -1,7 +1,10 @@
 / {  
-	chosen {
-		zephyr,user = &adc0;
-	};
+
+
+	zephyr,user {
+        io-channels =
+            <&adc0 6>;
+    };
 	
 
 	gpio_keys {
@@ -22,10 +25,24 @@
 	aliases {
 		led-yellow = &ledyellow;
 		lcd-screen = &lcdscreen;
+		bouton-gauche = &button0;
+		bouton-droite = &button1;
+
 	};
 
-	
+	buttons {
+		compatible = "gpio-keys";
 
+		button0: button_0 {
+		gpios = <&gpio0 16 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		label = "Bouton gauche ALARME";
+							};
+
+		button1: button_1 {
+			gpios = <&gpio0 27 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Bouton droite";
+								};
+	};
 
 
 }; // fin du noeud root
@@ -43,7 +60,7 @@
 
 };
 
-&adc0 {
+&adc0 {   //(capteur d'humidité analogique)
 	status = "okay";
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -56,42 +73,3 @@
 		zephyr,resolution = <12>;
 	};
 };
-
-
-
- /* 
-
-chosen {
-	zephyr,console = &uart0;
-};
-
-leds {
-compatible = "gpio-leds";
-led0: led_0 {
-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
-label = "Green LED 0";
-			};
-
-
-led1: led_1 {
-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
-label = "Green LED 1";
-};
-
-};
-
-pwmleds {
-compatible = "pwm-leds";
-pwm_led0: pwm_led_0 {
-pwms = <&pwm0 0 PWM_MSEC(20) PWM_POLARITY_INVERTED>;
-					};
-};
-
-buttons {
-compatible = "gpio-keys";
-button0: button_0 {
-gpios = <&gpio0 23 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-label = "Push button 1";
-					};
-		};
-*/
